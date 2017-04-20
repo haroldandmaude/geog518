@@ -15,3 +15,5 @@ function filterBy(year) {
     // Set the label to the month
     document.getElementById('month').textContent = months[month];
 }
+
+map.setFilter('Longtime-Residents', ['==', 'name', 'USA']);

@@ -7,6 +7,8 @@ var map = new mapboxgl.Map({
     zoom: 8 // starting zoom
 });
 
+
+
 map.addControl(new mapboxgl.NavigationControl());
 
 var toggleableLayerIds = [ 'Longtime-Residents', 'Percent-Rural-Population', 'Recent-Movers', 'Total-Population', 'Percent-Urban-Population', 'Retired-Population', 'Median-Age', 'Work-at-Home-Population' ];
@@ -40,4 +42,25 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
 }
 
 
-var years = [ '2012', '2013', '2014', '2015', '2016' ]
+// map.on('click', 'Retired-Population', function (e) {
+//     new mapboxgl.Popup()
+//         .setLngLat(e.lngLat)
+//         .setHTML(e.features[0].properties["Population (retired) 2012"])
+//         .addTo(map);
+// });
+//
+// // Change the cursor to a pointer when the mouse is over the states layer.
+// map.on('mouseenter', 'Retired-Population', function () {
+//     map.getCanvas().style.cursor = 'pointer';
+// });
+//
+// // Change it back to a pointer when it leaves.
+// map.on('mouseleave', 'Retired-Population', function () {
+//     map.getCanvas().style.cursor = '';
+// });
+
+// test
+map.on('mousemove', function (e) {
+    var features = map.queryRenderedFeatures(e.point);
+    document.getElementById('features').innerHTML = JSON.stringify(features, null, 2);
+});
