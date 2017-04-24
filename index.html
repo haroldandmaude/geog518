@@ -13,14 +13,20 @@
 </head>
 <body>
 
+<!-- /*<style>
+.mapboxgl-popup {
+    max-width: 400px;
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+</style>*/ -->
+
+
 <style>
 .mapboxgl-popup {
     max-width: 400px;
     font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
-</style>
 
-<style>
     #menu {
         background: #fff;
         position: absolute;
@@ -62,30 +68,28 @@
     #menu a.active:hover {
         background: #3074a4;
     }
-</style>
 
-<!-- test -->
-<style>
-    #features {
-        position: relative;
+    /*#features {
+        position: absolute;
         top: 0;
         right: 0;
         bottom: 0;
         width: 300px;
         overflow: auto;
         background: rgba(255, 255, 255, 0.8);
-    }
-    #map canvas {
+    }*/
+    /*#map canvas {
         cursor: crosshair;
-    }
+    }*/
+
 </style>
 
 <nav id="menu"></nav>
-
-
 <div id='map'></div>
+<!-- <pre id='features'></pre> -->
 <script language="javascript" type = "text/javascript" src ="pop.js"></script>
 <script language="javascript" type = "text/javascript" src ="layers.js"></script>
+<script language="javascript" type = "text/javascript" src ="custom.js"></script>
 
 
 </body>
