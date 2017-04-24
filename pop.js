@@ -63,23 +63,38 @@ map.on('click', 'Retired-Population', function (e) {
 });
 
 
-// Change the cursor to a pointer when the mouse is over the states layer.
-map.on('mouseenter', 'Retired-Population', function () {
-    map.getCanvas().style.cursor = 'pointer';
-});
+for (var i = 0; i < toggleableLayerIds.length; i++) {
+    var id = toggleableLayerIds[i];
+    map.on('mouseenter',id,function(){
+      map.getCanvas().style.cursor = 'pointer';
+    });
+    map.on('mouseleave', id, function () {
+        map.getCanvas().style.cursor = '';
+    });
 
-// Change it back to a pointer when it leaves.
-map.on('mouseleave', 'Retired-Population', function () {
-    map.getCanvas().style.cursor = '';
-});
+}
 
-// map.on('mousemove', function (e) {
-//     var features = map.queryRenderedFeatures(e.point);
-//     document.getElementById('features').innerHTML = JSON.stringify(features, null, 2);
+// // Change the cursor to a pointer when the mouse is over the states layer.
+// map.on('mouseenter', 'Retired-Population', function () {
+//     map.getCanvas().style.cursor = 'pointer';
+// });
+//
+// // Change it back to a pointer when it leaves.
+// map.on('mouseleave', 'Retired-Population', function () {
+//     map.getCanvas().style.cursor = '';
 // });
 
-// test
-// map.on('mousemove', function (e) {
-//     var features = map.queryRenderedFeatures(e.point);
-//     document.getElementById('features').innerHTML = JSON.stringify(features, null, 2);
-// });
+
+//basemap
+
+var layerList = document.getElementById('change-base');
+var inputs = layerList.getElementsByTagName('input');
+
+function switchLayer(layer) {
+    var layerId = layer.target.id;
+    map.setStyle('mapbox://styles/mapbox/' + layerId + '-v9');
+}
+
+for (var i = 0; i < inputs.length; i++) {
+    inputs[i].onclick = switchLayer;
+}

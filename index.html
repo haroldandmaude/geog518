@@ -68,24 +68,73 @@
     #menu a.active:hover {
         background: #3074a4;
     }
+    .legend {
+        background-color: #fff;
+        border-radius: 3px;
+        border: 1px solid rgba(0,0,0,0.4);
+        top: 10px;
+        bottom: 637px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        position: fixed;
+        right: 210px;
+        z-index: 1;
+    }
 
-    /*#features {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        width: 300px;
-        overflow: auto;
-        background: rgba(255, 255, 255, 0.8);
-    }*/
-    /*#map canvas {
-        cursor: crosshair;
-    }*/
+    .legend div span {
+        border-radius: 50%;
+        display: inline-block;
+        height: 20px;
+        margin-right: 2px;
+        margin-top: 8px;
+        maring-bottom: 5px;
+        width: 20px;
+    }
+    .base {
+        background-color: #fff;
+        border-radius: 3px;
+        border: 1px solid rgba(0,0,0,0.4);
+        top: 10px;
+        left: 10px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        position: fixed;
+        z-index: 1;
+    }
 
 </style>
 
+
 <nav id="menu"></nav>
 <div id='map'></div>
+
+
+
+
+<div id='layer-legend' class='legend'>
+    <div><span style='background-color: rgba(128, 128, 128, 1); height: 20px; width: 20px'></div>
+    <div><span style='background-color: #131413; height: 20px; width: 20px'></div>
+    <div><span style='background-color: #4245f4; height: 20px; width: 20px'></div>
+    <div><span style='background-color: rgba(226,22,11,1); height: 20px; width: 20px'></div>
+    <div><span style='background-color: rgba(237,226,16,1); height: 20px; width: 20px'></div>
+    <div><span style='background-color: rgba(139,69,19,1); height: 20px; width: 20px'></div>
+    <div><span style='background-color: rgba(16,130,33,1); height: 20px; width: 20px'></div>
+
+<div id='change-base' class='base'>
+    <input id='streets' type='radio' name='rtoggle' value='streets' checked='checked'>
+    <label for='streets'>streets</label>
+    <input id='satellite' type='radio' name='rtoggle' value='satellite'>
+    <label for='satellite'>satellite</label>
+</div>
+
 <!-- <pre id='features'></pre> -->
 <script language="javascript" type = "text/javascript" src ="pop.js"></script>
 <script language="javascript" type = "text/javascript" src ="layers.js"></script>
