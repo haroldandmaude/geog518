@@ -31,10 +31,10 @@
         background: #fff;
         position: absolute;
         z-index: 1;
-        top: 10px;
-        right: 10px;
+        top: 350px;
+        left: 10px;
         border-radius: 3px;
-        width: 120px;
+        width: 180px;
         border: 1px solid rgba(0,0,0,0.4);
         font-family: 'Open Sans', sans-serif;
     }
@@ -68,20 +68,63 @@
     #menu a.active:hover {
         background: #3074a4;
     }
+
+    #menu2 {
+        background: #fff;
+        position: absolute;
+        z-index: 1;
+        top: 50px;
+        left: 10px;
+        border-radius: 3px;
+        width: 180px;
+        border: 1px solid rgba(0,0,0,0.4);
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    #menu2 b {
+        font-size: 13px;
+        color: #404040;
+        display: block;
+        margin: 0;
+        padding: 0;
+        padding: 10px;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(0,0,0,0.25);
+        text-align: center;
+    }
+
+    #menu2 b:last-child {
+        border: none;
+    }
+
+    #menu2 b:hover {
+        background-color: #f8f8f8;
+        color: #404040;
+    }
+
+    #menu2 b.active {
+        background-color: #3887be;
+        color: #ffffff;
+    }
+
+    #menu2 b.active:hover {
+        background: #3074a4;
+    }
+
     .legend {
         background-color: #fff;
         border-radius: 3px;
         border: 1px solid rgba(0,0,0,0.4);
-        top: 10px;
+        top: 45px;
         bottom: 637px;
         box-shadow: 0 1px 2px rgba(0,0,0,0.10);
         font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
         padding-top: 5px;
-        padding-bottom: 5px;
+        padding-bottom: 255px;
         padding-left: 10px;
         padding-right: 10px;
         position: fixed;
-        right: 210px;
+        left: 210px;
         z-index: 1;
     }
 
@@ -91,7 +134,7 @@
         height: 20px;
         margin-right: 2px;
         margin-top: 8px;
-        maring-bottom: 5px;
+        margin-bottom: 2px;
         width: 20px;
     }
     .base {
@@ -114,6 +157,7 @@
 
 
 <nav id="menu"></nav>
+<nav id="menu2"></nav>
 <div id='map'></div>
 
 
