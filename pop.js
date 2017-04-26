@@ -268,11 +268,153 @@ for (var i = 0; i < inputs.length; i++) {
 //     fillOpacity: 0.7
 //   };
 // }
-//
-
-// map.setPaintProperty('Retired-Population', 'fill-color', '#000000');
+//var census = [ 'Longtime-Residents', 'Percent-Rural-Population', 'Recent-Movers', 'Total-Population', 'Percent-Urban-Population', 'Retired-Population', 'Median-Age', 'Work-at-Home-Population' ];
 
 
+map.on('load', function(){
+  map.setPaintProperty('Longtime-Residents', 'fill-color',{
+    property:"Population (longtime residents) 2016",
+    // property:.[1],
+    stops:[
+          [0, '#fff7ec'],
+          [4, '#fee8c8'],
+          [30, '#fdd49e'],
+          [70,'#fdbb84'],
+          [100,'#fddbc7'],
+          [130,'#fc8d59'],
+          [170,'#ef6548'],
+          [185,'#990000'],
+          ]
+        });
+})
+
+map.on('load', function(){
+  map.setPaintProperty('Percent-Rural-Population', 'fill-color',{
+    property:"% Rural Population 2016",
+    // property:.[1],
+    stops:[
+          [0, '#fff7ec'],
+          [4, '#fee8c8'],
+          [30, '#fdd49e'],
+          [70,'#fdbb84'],
+          [100,'#fddbc7'],
+          [130,'#fc8d59'],
+          [170,'#ef6548'],
+          [185,'#990000'],
+          ]
+        });
+})
+
+map.on('load', function(){
+  map.setPaintProperty('Recent-Movers', 'fill-color',{
+    property:"Population (recently moved) 2016",
+    // property:.[1],
+    stops:[
+          [0, '#fff7ec'],
+          [4, '#fee8c8'],
+          [30, '#fdd49e'],
+          [70,'#fdbb84'],
+          [100,'#fddbc7'],
+          [130,'#fc8d59'],
+          [170,'#ef6548'],
+          [185,'#990000'],
+          ]
+        });
+})
+
+map.on('load', function(){
+  map.setPaintProperty('Total-Population', 'fill-color',{
+    property:"Population (total) 2016",
+    // property:.[1],
+    stops:[
+          [0, '#fff7ec'],
+          [4, '#fee8c8'],
+          [30, '#fdd49e'],
+          [70,'#fdbb84'],
+          [100,'#fddbc7'],
+          [130,'#fc8d59'],
+          [170,'#ef6548'],
+          [185,'#990000'],
+          ]
+        });
+})
+
+map.on('load', function(){
+  map.setPaintProperty('Percent-Urban-Population', 'fill-color',{
+    property:"% Urban Population 2016",
+    // property:.[1],
+    stops:[
+          [0, '#fff7ec'],
+          [4, '#fee8c8'],
+          [30, '#fdd49e'],
+          [70,'#fdbb84'],
+          [100,'#fddbc7'],
+          [130,'#fc8d59'],
+          [170,'#ef6548'],
+          [185,'#990000'],
+          ]
+        });
+})
+
+map.on('load', function(){
+  map.setPaintProperty('Retired-Population', 'fill-color',{
+    property:"Population (retired) 2016",
+    // property:.[1],
+    stops:[
+          [0, '#fff7ec'],
+          [10, '#fee8c8'],
+          [20, '#fdd49e'],
+          [30,'#fdbb84'],
+          [40,'#fddbc7'],
+          [50,'#fc8d59'],
+          [65,'#ef6548'],
+          [70,'#990000'],
+          ]
+        });
+})
+
+map.on('load', function(){
+  map.setPaintProperty('Median-Age', 'fill-color',{
+    property:"Median Age 2016",
+    // property:.[1],
+    stops:[
+          [30, '#fff7ec'],
+          [35, '#fee8c8'],
+          [40, '#fdd49e'],
+          [45,'#fdbb84'],
+          [50,'#fddbc7'],
+          [55,'#fc8d59'],
+          [60,'#ef6548'],
+          [65,'#990000'],
+          ]
+        });
+})
+
+map.on('load', function(){
+  map.setPaintProperty('Work-at-Home-Population', 'fill-color',{
+    property:"Population (work at home) 2016",
+    // property:.[1],
+    stops:[
+          [0, '#fff7ec'],
+          [4, '#fee8c8'],
+          [30, '#fdd49e'],
+          [70,'#fdbb84'],
+          [100,'#fddbc7'],
+          [130,'#fc8d59'],
+          [170,'#ef6548'],
+          [185,'#990000'],
+          ]
+        });
+})
+
+// #fff7ec
+// #fee8c8
+// #fdd49e
+// #fdbb84
+// #fc8d59
+// #ef6548
+// #d7301f
+// #990000
 
 //
 // for (var i = 0, i < census.length; i++{
