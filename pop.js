@@ -2,20 +2,15 @@ mapboxgl.accessToken = 'pk.eyJ1IjoidHVyZHMiLCJhIjoiY2l6dDE3ZzFyMDA4dTJ3b2RjOHQ2a
 
 var map = new mapboxgl.Map({
     container: 'map', // container id
-    style: 'mapbox://styles/mapbox/streets-v10', //hosted style id
-    center: [-83.9, 35.96], // starting position
-    zoom: 9 // starting zoom
+    style: 'mapbox://styles/mapbox/streets-v9', //hosted style id
+    zoom: 8.5,
+    center: [-83.9593188, 35.91],
 });
-
-
 
 map.addControl(new mapboxgl.NavigationControl());
 
-
 var census = [ 'Longtime-Residents', 'Percent-Rural-Population', 'Recent-Movers', 'Total-Population', 'Percent-Urban-Population', 'Retired-Population', 'Median-Age', 'Work-at-Home-Population' ];
 var enviro = [ 'US-Census-Urban-Areas', 'ETQG-Region', 'Farmers-Market', 'Historical-Landmarks', 'Transnational-Companies', 'EPA-Brownfield-Sites', 'Parks'  ]
-
-
 
 //census loop
 for (var i = 0; i < census.length; i++) {
@@ -23,7 +18,7 @@ for (var i = 0; i < census.length; i++) {
 
     var link = document.createElement('a');
     link.href = '#';
-    link.className = 'active';
+    link.className = 'none';
     link.textContent = id;
 
     link.onclick = function (e) {
@@ -35,7 +30,7 @@ for (var i = 0; i < census.length; i++) {
 
         if (visibility === 'visible') {
             map.setLayoutProperty(clickedLayer, 'visibility', 'none');
-            this.className = '';
+            this.className = 'none';
         } else {
             this.className = 'active';
             map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
@@ -52,7 +47,7 @@ for (var i = 0; i < enviro.length; i++) {
 
     var link = document.createElement('b');
     link.href = '#';
-    link.className = 'active';
+    link.className = 'none';
     link.textContent = id;
 
     link.onclick = function (e) {
@@ -64,7 +59,7 @@ for (var i = 0; i < enviro.length; i++) {
 
         if (visibility === 'visible') {
             map.setLayoutProperty(clickedLayer, 'visibility', 'none');
-            this.className = '';
+            this.className = 'none';
         } else {
             this.className = 'active';
             map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
@@ -83,7 +78,9 @@ for (var i = 0; i < enviro.length; i++) {
 map.on('click', 'Historical-Landmarks', function (e) {
     new mapboxgl.Popup()
         .setLngLat(e.features[0].geometry.coordinates)
-        .setHTML("Historical-Landmarks" + "<br>" + "County: " + e.features[0].properties.County + "<br>" + "Name: " + e.features[0].properties.Name)
+        .setHTML("Historical-Landmarks" + "<br>" + 
+                 "County: " + e.features[0].properties.County + "<br>" +
+                 "Name: " + e.features[0].properties.Name)
         .addTo(map);
 });
 
@@ -91,7 +88,10 @@ map.on('click', 'Historical-Landmarks', function (e) {
 map.on('click', 'Farmers-Market', function (e) {
     new mapboxgl.Popup()
         .setLngLat(e.features[0].geometry.coordinates)
-        .setHTML("Farmers-Market" + "<br>" + "Name: " + e.features[0].properties.Name + "<br>" + "City: " + e.features[0].properties.City + "<br>" + "Address: " + e.features[0].properties.Address)
+        .setHTML("Farmers-Market" + "<br>" + 
+                 "Name: " + e.features[0].properties.Name + "<br>" +
+                 "City: " + e.features[0].properties.City + "<br>" +
+                 "Address: " + e.features[0].properties.Address)
         .addTo(map);
 });
 
@@ -99,7 +99,11 @@ map.on('click', 'Farmers-Market', function (e) {
 map.on('click', 'Transnational-Companies', function (e) {
     new mapboxgl.Popup()
         .setLngLat(e.features[0].geometry.coordinates)
-        .setHTML("Transnational-Companies" + "<br>" + "Company: " + e.features[0].properties.Company + "<br>" + "Subsidiary: " + e.features[0].properties.Subsidiary + "<br>" + "Address: " + e.features[0].properties.Address + "<br>" + "Telephone: " + e.features[0].properties.Telephone)
+        .setHTML("Transnational-Companies" + "<br>" + 
+                 "Company: " + e.features[0].properties.Company + "<br>" +
+                 "Subsidiary: " + e.features[0].properties.Subsidiary + "<br>" + 
+                 "Address: " + e.features[0].properties.Address + "<br>" + 
+                 "Telephone: " + e.features[0].properties.Telephone)
         .addTo(map);
 });
 
@@ -107,7 +111,8 @@ map.on('click', 'Transnational-Companies', function (e) {
 map.on('click', 'EPA-Brownfield-Sites', function (e) {
     new mapboxgl.Popup()
         .setLngLat(e.features[0].geometry.coordinates)
-        .setHTML("EPA-Brownfield-Sites" + "<br>" + "Name: " + e.features[0].properties.Name)
+        .setHTML("EPA-Brownfield-Sites" + "<br>" + 
+                 "Name: " + e.features[0].properties.Name)
         .addTo(map);
 });
 
@@ -115,7 +120,8 @@ map.on('click', 'EPA-Brownfield-Sites', function (e) {
 map.on('click', 'Parks', function (e) {
     new mapboxgl.Popup()
         .setLngLat(e.lngLat)
-        .setHTML("Parks" + "<br>" + "Name: " + e.features[0].properties.Name)
+        .setHTML("Parks" + "<br>" + 
+                 "Name: " + e.features[0].properties.Name)
         .addTo(map);
 });
 
@@ -123,7 +129,8 @@ map.on('click', 'Parks', function (e) {
 map.on('click', 'ETQG-Region', function (e) {
     new mapboxgl.Popup()
         .setLngLat(e.lngLat)
-        .setHTML("ETQG-Region" + "<br>" + e.features[0].properties.NAMELSAD)
+        .setHTML("ETQG-Region" + "<br>" + 
+                 e.features[0].properties.NAMELSAD)
         .addTo(map);
 });
 
@@ -131,88 +138,96 @@ map.on('click', 'ETQG-Region', function (e) {
 map.on('click', 'Longtime-Residents', function (e) {
     new mapboxgl.Popup()
         .setLngLat(e.lngLat)
-        .setHTML("Longtime-Residents" + "<br>" + "2012: " + e.features[0].properties["Population (longtime residents) 2012"] + "<br>" +
-                                                      "2013: " + e.features[0].properties["Population (longtime residents) 2013"] + "<br>" +
-                                                      "2014: " + e.features[0].properties["Population (longtime residents) 2014"] + "<br>" +
-                                                      "2015: " + e.features[0].properties["Population (longtime residents) 2015"] + "<br>" +
-                                                      "2016: " + e.features[0].properties["Population (longtime residents) 2016"])
+        .setHTML("Longtime-Residents" + "<br>" + 
+                 "2012: " + e.features[0].properties["Population (longtime residents) 2012"] + "<br>" +
+                 "2013: " + e.features[0].properties["Population (longtime residents) 2013"] + "<br>" +
+                 "2014: " + e.features[0].properties["Population (longtime residents) 2014"] + "<br>" +
+                 "2015: " + e.features[0].properties["Population (longtime residents) 2015"] + "<br>" +
+                 "2016: " + e.features[0].properties["Population (longtime residents) 2016"])
         .addTo(map);
 });
 
 map.on('click', 'Percent-Rural-Population', function (e) {
     new mapboxgl.Popup()
         .setLngLat(e.lngLat)
-        .setHTML("Percent-Rural-Population" + "<br>" + "2012: "+ e.features[0].properties["% Rural Population 2012"] + "<br>" +
-                                                      "2013: " + e.features[0].properties["% Rural Population 2013"] + "<br>" +
-                                                      "2014: " + e.features[0].properties["% Rural Population 2014"] + "<br>" +
-                                                      "2015: " + e.features[0].properties["% Rural Population 2015"] + "<br>" +
-                                                      "2016: " + e.features[0].properties["% Rural Population 2016"])
+        .setHTML("Percent-Rural-Population" + "<br>" + 
+                 "2012: "+ e.features[0].properties["% Rural Population 2012"] + "<br>" +
+                 "2013: " + e.features[0].properties["% Rural Population 2013"] + "<br>" +
+                 "2014: " + e.features[0].properties["% Rural Population 2014"] + "<br>" +
+                 "2015: " + e.features[0].properties["% Rural Population 2015"] + "<br>" +
+                 "2016: " + e.features[0].properties["% Rural Population 2016"])
         .addTo(map);
 });
 
 map.on('click', 'Recent-Movers', function (e) {
     new mapboxgl.Popup()
         .setLngLat(e.lngLat)
-        .setHTML("Recent-Movers" + "<br>" + "2012: " + e.features[0].properties["Population (recently moved) 2012"] + "<br>" +
-                                                      "2013: " + e.features[0].properties["Population (recently moved) 2013"] + "<br>" +
-                                                      "2014: " + e.features[0].properties["Population (recently moved) 2014"] + "<br>" +
-                                                      "2015: " + e.features[0].properties["Population (recently moved) 2015"] + "<br>" +
-                                                      "2016: " + e.features[0].properties["Population (recently moved) 2016"])
+        .setHTML("Recent-Movers" + "<br>" + 
+                 "2012: " + e.features[0].properties["Population (recently moved) 2012"] + "<br>" +
+                 "2013: " + e.features[0].properties["Population (recently moved) 2013"] + "<br>" +
+                 "2014: " + e.features[0].properties["Population (recently moved) 2014"] + "<br>" +
+                 "2015: " + e.features[0].properties["Population (recently moved) 2015"] + "<br>" +
+                 "2016: " + e.features[0].properties["Population (recently moved) 2016"])
         .addTo(map);
 });
 
 map.on('click', 'Total-Population', function (e) {
     new mapboxgl.Popup()
         .setLngLat(e.lngLat)
-        .setHTML("Total-Population" + "<br>" + "2012: " + e.features[0].properties["Population (total) 2012"] + "<br>" +
-                                                      "2013: " + e.features[0].properties["Population (total) 2013"] + "<br>" +
-                                                      "2014: " + e.features[0].properties["Population (total) 2014"] + "<br>" +
-                                                      "2015: " + e.features[0].properties["Population (total) 2015"] + "<br>" +
-                                                      "2016: " + e.features[0].properties["Population (total) 2016"])
+        .setHTML("Total-Population" + "<br>" + 
+                 "2012: " + e.features[0].properties["Population (total) 2012"] + "<br>" +
+                 "2013: " + e.features[0].properties["Population (total) 2013"] + "<br>" +
+                 "2014: " + e.features[0].properties["Population (total) 2014"] + "<br>" +
+                 "2015: " + e.features[0].properties["Population (total) 2015"] + "<br>" +
+                 "2016: " + e.features[0].properties["Population (total) 2016"])
         .addTo(map);
 });
 
 map.on('click', 'Percent-Urban-Population', function (e) {
     new mapboxgl.Popup()
         .setLngLat(e.lngLat)
-        .setHTML("Percent-Urban-Population" + "<br>" + "2012: " + e.features[0].properties["% Urban Population 2012"] + "<br>" +
-                                                      "2013: " + e.features[0].properties["% Urban Population 2013"] + "<br>" +
-                                                      "2014: " + e.features[0].properties["% Urban Population 2014"] + "<br>" +
-                                                      "2015: " + e.features[0].properties["% Urban Population 2015"] + "<br>" +
-                                                      "2016: " + e.features[0].properties["% Urban Population 2016"])
+        .setHTML("Percent-Urban-Population" + "<br>" + 
+                 "2012: " + e.features[0].properties["% Urban Population 2012"] + "<br>" +
+                 "2013: " + e.features[0].properties["% Urban Population 2013"] + "<br>" +
+                 "2014: " + e.features[0].properties["% Urban Population 2014"] + "<br>" +
+                 "2015: " + e.features[0].properties["% Urban Population 2015"] + "<br>" +
+                 "2016: " + e.features[0].properties["% Urban Population 2016"])
         .addTo(map);
 });
 
 map.on('click', 'Retired-Population', function (e) {
     new mapboxgl.Popup()
         .setLngLat(e.lngLat)
-        .setHTML("Retired-Population" + "<br>" + "2012: " + e.features[0].properties["Population (retired) 2012"] + "<br>" +
-                                                      "2013: " + e.features[0].properties["Population (retired) 2013"] + "<br>" +
-                                                      "2014: " + e.features[0].properties["Population (retired) 2014"] + "<br>" +
-                                                      "2015: " + e.features[0].properties["Population (retired) 2015"] + "<br>" +
-                                                      "2016: " + e.features[0].properties["Population (retired) 2016"])
+        .setHTML("Retired-Population" + "<br>" + 
+                 "2012: " + e.features[0].properties["Population (retired) 2012"] + "<br>" +
+                 "2013: " + e.features[0].properties["Population (retired) 2013"] + "<br>" +
+                 "2014: " + e.features[0].properties["Population (retired) 2014"] + "<br>" +
+                 "2015: " + e.features[0].properties["Population (retired) 2015"] + "<br>" +
+                 "2016: " + e.features[0].properties["Population (retired) 2016"])
         .addTo(map);
 });
 
 map.on('click', 'Median-Age', function (e) {
     new mapboxgl.Popup()
         .setLngLat(e.lngLat)
-        .setHTML("Median-Age" + "<br>" +  "2012: " + e.features[0].properties["Median Age 2012"] + "<br>" +
-                                                      "2013: " + e.features[0].properties["Median Age 2013"] + "<br>" +
-                                                      "2014: " + e.features[0].properties["Median Age 2014"] + "<br>" +
-                                                      "2015: " + e.features[0].properties["Median Age 2015"] + "<br>" +
-                                                      "2016: " + e.features[0].properties["Median Age 2016"])
+        .setHTML("Median-Age" + "<br>" +  
+                 "2012: " + e.features[0].properties["Median Age 2012"] + "<br>" +
+                 "2013: " + e.features[0].properties["Median Age 2013"] + "<br>" +
+                 "2014: " + e.features[0].properties["Median Age 2014"] + "<br>" +
+                 "2015: " + e.features[0].properties["Median Age 2015"] + "<br>" +
+                 "2016: " + e.features[0].properties["Median Age 2016"])
         .addTo(map);
 });
 
 map.on('click', 'Work-at-Home-Population', function (e) {
     new mapboxgl.Popup()
         .setLngLat(e.lngLat)
-        .setHTML("Work-at-Home-Population" + "<br>" + "2012: " + e.features[0].properties["Population (work at home) 2012"] + "<br>" +
-                                                      "2013: " + e.features[0].properties["Population (work at home) 2013"] + "<br>" +
-                                                      "2014: " + e.features[0].properties["Population (work at home) 2014"] + "<br>" +
-                                                      "2015: " + e.features[0].properties["Population (work at home) 2015"] + "<br>" +
-                                                      "2016: " + e.features[0].properties["Population (work at home) 2016"])
+        .setHTML("Work-at-Home-Population" + "<br>" + 
+                 "2012: " + e.features[0].properties["Population (work at home) 2012"] + "<br>" +
+                 "2013: " + e.features[0].properties["Population (work at home) 2013"] + "<br>" +
+                 "2014: " + e.features[0].properties["Population (work at home) 2014"] + "<br>" +
+                 "2015: " + e.features[0].properties["Population (work at home) 2015"] + "<br>" +
+                 "2016: " + e.features[0].properties["Population (work at home) 2016"])
         .addTo(map);
 });
 
@@ -229,6 +244,16 @@ for (var i = 0; i < census.length; i++) {
 
 }
 
+for (var i = 0; i < enviro.length; i++) {
+    var id = enviro[i];
+    map.on('mouseenter',id,function(){
+      map.getCanvas().style.cursor = 'pointer';
+    });
+    map.on('mouseleave', id, function () {
+        map.getCanvas().style.cursor = '';
+    });
+
+}
 
 //basemap
 var layerList = document.getElementById('change-base');
@@ -242,34 +267,6 @@ function switchLayer(layer) {
 for (var i = 0; i < inputs.length; i++) {
     inputs[i].onclick = switchLayer;
 };
-
-
-//
-// ///custom colors (not working)
-// function getColor(d) {
-//   return    d > 185 ? '#b2182b' :
-//             d > 170 ? '#d6604d' :
-//             d > 130 ? '#f4a582' :
-//             d > 100 ? '#fddbc7' :
-//             d > 70  ? '#d1e5f0' :
-//             d > 30  ? '#92c5de' :
-//             d > 4   ? '#4393c3' :
-//                       '#2166ac';
-// }
-//
-//
-// function style(feature) {
-//   return {
-//     fillColor: getColor(feature.properties["Population (retired) 2014"]),
-//     weight: 2,
-//     opacity: 1,
-//     color: 'white',
-//     dashArray: '3',
-//     fillOpacity: 0.7
-//   };
-// }
-//var census = [ 'Longtime-Residents', 'Percent-Rural-Population', 'Recent-Movers', 'Total-Population', 'Percent-Urban-Population', 'Retired-Population', 'Median-Age', 'Work-at-Home-Population' ];
-
 
 map.on('load', function(){
   map.setPaintProperty('Longtime-Residents', 'fill-color',{
@@ -407,21 +404,3 @@ map.on('load', function(){
         });
 })
 
-// #fff7ec
-// #fee8c8
-// #fdd49e
-// #fdbb84
-// #fc8d59
-// #ef6548
-// #d7301f
-// #990000
-
-//
-// for (var i = 0, i < census.length; i++{
-//   var id = census[i];
-  //style(id)
-// map.on('load', function() {
-// var mysty = style('Retired-Population')
-// ('Retired-Population', {style: style}).addTo(map);
-// }
-// }
