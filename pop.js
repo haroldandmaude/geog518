@@ -9,16 +9,17 @@ var map = new mapboxgl.Map({
 
 map.addControl(new mapboxgl.NavigationControl());
 
-var census = [ 'Longtime-Residents', 'Percent-Rural-Population', 'Recent-Movers', 'Total-Population', 'Percent-Urban-Population', 'Retired-Population', 'Median-Age', 'Work-at-Home-Population' ];
-var enviro = [ 'US-Census-Urban-Areas', 'ETQG-Region', 'Farmers-Market', 'Historical-Landmarks', 'Transnational-Companies', 'EPA-Brownfield-Sites', 'Parks'  ]
+var enviro = ['US-Census-Urban-Areas', 'ETQG-Region', 'Farmers-Market', 'Historical-Landmarks', 'Transnational-Companies', 'EPA-Brownfield-Sites', 'Parks'];
+var census = ['Longtime-Residents', 'Percent-Rural-Population', 'Recent-Movers', 'Total-Population', 'Percent-Urban-Population', 'Retired-Population', 'Median-Age', 'Work-at-Home-Population'];
+var all_layers = enviro.concat(census);
 
-//census loop
-for (var i = 0; i < census.length; i++) {
-    var id = census[i];
+///enviro loop
+for (var i = 0; i < all_layers.length; i++) {
+    var id = all_layers[i];
 
     var link = document.createElement('a');
     link.href = '#';
-    link.className = 'none';
+    link.className = 'menu';
     link.textContent = id;
 
     link.onclick = function (e) {
@@ -40,36 +41,6 @@ for (var i = 0; i < census.length; i++) {
     var layers = document.getElementById('menu');
     layers.appendChild(link);
 }
-
-///enviro loop
-for (var i = 0; i < enviro.length; i++) {
-    var id = enviro[i];
-
-    var link = document.createElement('b');
-    link.href = '#';
-    link.className = 'none';
-    link.textContent = id;
-
-    link.onclick = function (e) {
-        var clickedLayer = this.textContent;
-        e.preventDefault();
-        e.stopPropagation();
-
-        var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
-
-        if (visibility === 'visible') {
-            map.setLayoutProperty(clickedLayer, 'visibility', 'none');
-            this.className = 'none';
-        } else {
-            this.className = 'active';
-            map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
-        }
-    };
-
-    var layers = document.getElementById('menu2');
-    layers.appendChild(link);
-}
-/////
 
 
 // POP UP FUNCTIONS
@@ -233,19 +204,8 @@ map.on('click', 'Work-at-Home-Population', function (e) {
 
 
 //loop over layers, make cursor point when over and not when leave
-for (var i = 0; i < census.length; i++) {
-    var id = census[i];
-    map.on('mouseenter',id,function(){
-      map.getCanvas().style.cursor = 'pointer';
-    });
-    map.on('mouseleave', id, function () {
-        map.getCanvas().style.cursor = '';
-    });
-
-}
-
-for (var i = 0; i < enviro.length; i++) {
-    var id = enviro[i];
+for (var i = 0; i < all_layers.length; i++) {
+    var id = all_layers[i];
     map.on('mouseenter',id,function(){
       map.getCanvas().style.cursor = 'pointer';
     });
@@ -403,4 +363,3 @@ map.on('load', function(){
           ]
         });
 })
-
