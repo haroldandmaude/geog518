@@ -9,7 +9,7 @@ var customLayers = [
                     {source: {type: "vector", url: 'mapbox://turds.Recent-Movers'}, layer: {id: "Recent-Movers",source:"Recent-Movers",'source-layer': "Recent-Movers", type: "fill", 'layout': {'visibility': 'none'}, paint: {"fill-color":'#e2d9de','fill-outline-color':'#000000','fill-opacity':.5}}},
                     {source: {type: "vector", url: 'mapbox://turds.Percent-Rural-Population'}, layer: {id: "Percent-Rural-Population",source:"Percent-Rural-Population",'source-layer': "Percent-Rural-Population", type: "fill", 'layout': {'visibility': 'none'},paint: {"fill-color":'#e2d9de','fill-outline-color':'#000000','fill-opacity':.5}}},
                     {source: {type: "vector", url: 'mapbox://turds.Longtime-Residents'}, layer: {id: "Longtime-Residents",source:"Longtime-Residents",'source-layer': "Longtime-Residents", type: "fill",'layout': {'visibility': 'none'}, paint: {"fill-color":'#e2d9de','fill-outline-color':'#000000','fill-opacity':.5}}},
-                    // envior layers
+                    //enviro layers
                     {source: {type: "vector", url: "mapbox://turds.US-Census-Urban-Areas"}, layer: {id: "US-Census-Urban-Areas", source: "US-Census-Urban-Areas", type: "fill", 'source-layer': "US-Census-Urban-Areas", 'layout': {'visibility': 'none'}, paint: {'fill-color': 'rgba(128, 128, 128, 0.4)', 'fill-outline-color': 'rgba(128, 128, 128, 1)'}}},
                     {source: {type: "vector", url: "mapbox://turds.ETQG-Region"}, layer: {id: "ETQG-Region", source: "ETQG-Region", type: "fill", 'source-layer': "ETQG-Region", 'layout': {'visibility': 'none'}, paint: {'fill-color': 'rgba(16,130,33,0)', 'fill-outline-color': '#131413'}}},
                     {source: {type: "vector", url: "mapbox://turds.Transnational-Companies"}, layer: {id: "Transnational-Companies", source: "Transnational-Companies", type: "circle", 'source-layer': "Transnational-Companies", 'layout': {'visibility': 'none'}, paint: {'circle-radius': 8, 'circle-color': 'rgba(237,226,16,1)'}}},
@@ -24,6 +24,8 @@ map.on('style.load', function() {
     for (var i = 0; i < customLayers.length; i ++) {
         var me = customLayers[i]
         map.addSource(me.layer.id, me.source);
+        
         map.addLayer(me.layer)
     }
 });
+

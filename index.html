@@ -13,14 +13,6 @@
 </head>
 <body>
 
-<!-- /*<style>
-.mapboxgl-popup {
-    max-width: 400px;
-    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-}
-</style>*/ -->
-
-
 <style>
 .mapboxgl-popup {
     max-width: 400px;
@@ -31,7 +23,7 @@
         background: #fff;
         position: absolute;
         z-index: 1;
-        top: 350px;
+        top: 50px;
         left: 10px;
         border-radius: 3px;
         width: 180px;
@@ -44,7 +36,6 @@
         color: #404040;
         display: block;
         margin: 0;
-        padding: 0;
         padding: 10px;
         text-decoration: none;
         border-bottom: 1px solid rgba(0,0,0,0.25);
@@ -66,48 +57,6 @@
     }
 
     #menu a.active:hover {
-        background: #3074a4;
-    }
-
-    #menu2 {
-        background: #fff;
-        position: absolute;
-        z-index: 1;
-        top: 50px;
-        left: 10px;
-        border-radius: 3px;
-        width: 180px;
-        border: 1px solid rgba(0,0,0,0.4);
-        font-family: 'Open Sans', sans-serif;
-    }
-
-    #menu2 b {
-        font-size: 13px;
-        color: #404040;
-        display: block;
-        margin: 0;
-        padding: 0;
-        padding: 10px;
-        text-decoration: none;
-        border-bottom: 1px solid rgba(0,0,0,0.25);
-        text-align: center;
-    }
-
-    #menu2 b:last-child {
-        border: none;
-    }
-
-    #menu2 b:hover {
-        background-color: #f8f8f8;
-        color: #404040;
-    }
-
-    #menu2 b.active {
-        background-color: #3887be;
-        color: #ffffff;
-    }
-
-    #menu2 b.active:hover {
         background: #3074a4;
     }
 
@@ -151,6 +100,7 @@
         padding-right: 10px;
         position: fixed;
         z-index: 1;
+        width: 160px
     }
 
 </style>
@@ -168,12 +118,13 @@
     <div><span style='background-color: rgba(237,226,16,1); height: 20px; width: 20px'></div>
     <div><span style='background-color: rgba(139,69,19,1); height: 20px; width: 20px'></div>
     <div><span style='background-color: rgba(16,130,33,1); height: 20px; width: 20px'></div>
+</div>
 
 <div id='change-base' class='base'>
     <input id='streets' type='radio' name='rtoggle' value='streets' checked='checked'>
-    <label for='streets'>streets</label>
+    <label for='streets'>Streets</label>
     <input id='satellite' type='radio' name='rtoggle' value='satellite'>
-    <label for='satellite'>satellite</label>
+    <label for='satellite'>Satellite</label>
 </div>
 
 <!-- <pre id='features'></pre> -->
