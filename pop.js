@@ -13,6 +13,13 @@ var enviro = ['US-Census-Urban-Areas', 'ETQG-Region', 'Farmers-Market', 'Histori
 var census = ['Longtime-Residents', 'Percent-Rural-Population', 'Recent-Movers', 'Total-Population', 'Percent-Urban-Population', 'Retired-Population', 'Median-Age', 'Work-at-Home-Population'];
 var all_layers = enviro.concat(census);
 
+var vis_status = {};
+
+for (var i = 0; i < all_layers.length; i++) {
+    var id = all_layers[i];
+    vis_status[id] = 'none';
+};    
+
 ///enviro loop
 for (var i = 0; i < all_layers.length; i++) {
     var id = all_layers[i];
@@ -21,7 +28,6 @@ for (var i = 0; i < all_layers.length; i++) {
     link.href = '#';
     link.className = 'menu';
     link.textContent = id;
-
     link.onclick = function (e) {
         var clickedLayer = this.textContent;
         e.preventDefault();
@@ -32,16 +38,17 @@ for (var i = 0; i < all_layers.length; i++) {
         if (visibility === 'visible') {
             map.setLayoutProperty(clickedLayer, 'visibility', 'none');
             this.className = 'none';
+            vis_status[clickedLayer] = 'none';
         } else {
             this.className = 'active';
             map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+            vis_status[clickedLayer] = 'visible';
         }
     };
 
     var layers = document.getElementById('menu');
     layers.appendChild(link);
 }
-
 
 // POP UP FUNCTIONS
 
