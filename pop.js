@@ -20,7 +20,7 @@ for (var i = 0; i < all_layers.length; i++) {
     vis_status[id] = 'none';
 };    
 
-///enviro loop
+///all_layers loop
 for (var i = 0; i < all_layers.length; i++) {
     var id = all_layers[i];
 

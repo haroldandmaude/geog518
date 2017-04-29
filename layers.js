@@ -16,8 +16,7 @@ var customLayers = [
                     {source: {type: "vector", url: "mapbox://turds.Farmers-Market"}, layer: {id: "Farmers-Market", source: "Farmers-Market", type: "circle", 'source-layer': "Farmers-Market", 'layout': {'visibility': 'none'}, paint: {'circle-radius': 8, 'circle-color': '#4245f4', "circle-stroke-width": 2, "circle-stroke-color": '#000'}}},
                     {source: {type: "vector", url: "mapbox://turds.Historical-Landmarks"}, layer: {id: "Historical-Landmarks", source: "Historical-Landmarks", type: "circle", 'source-layer': "Historical-Landmarks", 'layout': {'visibility': 'none'}, paint: {'circle-radius': 8, 'circle-color': 'rgba(226,22,11,1)', "circle-stroke-width": 2, "circle-stroke-color": '#000'}}},
                     {source: {type: "vector", url: "mapbox://turds.EPA-Brownfield-Sites"}, layer: {id: "EPA-Brownfield-Sites", source: "EPA-Brownfield-Sites", type: "circle", 'source-layer': "EPA-Brownfield-Sites",'layout': {'visibility': 'none'}, paint: {'circle-radius': 8, 'circle-color': 'rgba(139,69,19,1)', "circle-stroke-width": 2, "circle-stroke-color": '#000'}}},
-                    {source: {type: "vector", url: "mapbox://turds.Parks"}, layer: {id: "Parks", source: "Parks", type: "fill", 'source-layer': "Parks", 'layout': {'visibility': 'none'}, paint: {'fill-color': 'rgba(16,130,33,0.8)', 'fill-outline-color': 'rgba(16,130,33,1)'}}}
-                  ];
+                    {source: {type: "vector", url: "mapbox://turds.Parks"}, layer: {id: "Parks", source: "Parks", type: "fill", 'source-layer': "Parks", 'layout': {'visibility': 'none'}, paint: {'fill-color': 'rgba(16,130,33,0.8)', 'fill-outline-color': 'rgba(16,130,33,1)'}}}                  ];
 
 //basemap
 map.on('style.load', function() {
@@ -29,4 +28,3 @@ map.on('style.load', function() {
         map.addLayer(me.layer);
     }
 });
-
