@@ -17,6 +17,14 @@ var customLayers = [
                     {source: {type: "vector", url: "mapbox://turds.Farmers-Market"}, layer: {id: "Farmers-Market", source: "Farmers-Market", type: "circle", 'source-layer': "Farmers-Market", 'layout': {'visibility': 'none'}, paint: {'circle-radius': 8, 'circle-color': '#4245f4', "circle-stroke-width": 2, "circle-stroke-color": '#000'}}},
                     {source: {type: "vector", url: "mapbox://turds.Historical-Landmarks"}, layer: {id: "Historical-Landmarks", source: "Historical-Landmarks", type: "circle", 'source-layer': "Historical-Landmarks", 'layout': {'visibility': 'none'}, paint: {'circle-radius': 8, 'circle-color': 'rgba(226,22,11,1)', "circle-stroke-width": 2, "circle-stroke-color": '#000'}}},
                     {source: {type: "vector", url: "mapbox://turds.EPA-Brownfield-Sites"}, layer: {id: "EPA-Brownfield-Sites", source: "EPA-Brownfield-Sites", type: "circle", 'source-layer': "EPA-Brownfield-Sites",'layout': {'visibility': 'none'}, paint: {'circle-radius': 8, 'circle-color': 'rgba(139,69,19,1)', "circle-stroke-width": 2, "circle-stroke-color": '#000'}}},
+                    //labels
+                    {source: {type: "vector", url: "mapbox://turds.US-Census-Urban-Areas"}, layer: {id: "Urban-label", source:"US-Census-Urban-Areas", type: "symbol", 'source-layer': "US-Census-Urban-Areas", layout:{'visibility':'none', "text-field": "{NAME}"}}},
+                    {source: {type: "vector", url: "mapbox://turds.ETQG-Region"}, layer: {id: "ETQG-label", source:"ETQG-Region", type: "symbol", 'source-layer': "ETQG-Region", layout:{'visibility':'none', "text-field": "{NAME}"}}},
+                    {source: {type: "vector", url: "mapbox://turds.Parks"}, layer: {id: "Parks-label", source:"Parks", type: "symbol", 'source-layer': "Parks", layout:{'visibility':'none', "text-field": "{Name}"}}},
+                    {source: {type: "vector", url: "mapbox://turds.Transnational-Companies"}, layer: {id: "Companies-label", source:"Transnational-Companies", type: "symbol", 'source-layer': "Transnational-Companies", layout:{'visibility':'none', "text-field": "{Company}"}}},
+                    {source: {type: "vector", url: "mapbox://turds.Farmers-Market"}, layer: {id: "Market-label", source:"Farmers-Market", type: "symbol", 'source-layer': "Farmers-Market", layout:{'visibility':'none', "text-field": "{Name}"}}},
+                    {source: {type: "vector", url: "mapbox://turds.Historical-Landmarks"}, layer: {id: "Landmarks-label", source:"Historical-Landmarks", type: "symbol", 'source-layer': "Historical-Landmarks", layout:{'visibility':'none', "text-field": "{Name}"}}},
+                    {source: {type: "vector", url: "mapbox://turds.EPA-Brownfield-Sites"}, layer: {id: "EPA-label", source:"EPA-Brownfield-Sites", type: "symbol", 'source-layer': "EPA-Brownfield-Sites", layout:{'visibility':'none', "text-field": "{Name}"}}},
                     ];
 
 //basemap
@@ -25,7 +33,7 @@ map.on('style.load', function() {
         var me = customLayers[i];
         me.layer.layout.visibility = vis_status[me.layer.id];
         map.addSource(me.layer.id, me.source);
-        
+
         map.addLayer(me.layer);
     }
 });

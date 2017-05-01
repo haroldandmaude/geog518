@@ -10,15 +10,17 @@ var map = new mapboxgl.Map({
 map.addControl(new mapboxgl.NavigationControl());
 
 var enviro = ['US-Census-Urban-Areas', 'ETQG-Region', 'Farmers-Market', 'Historical-Landmarks', 'Transnational-Companies', 'EPA-Brownfield-Sites', 'Parks'];
+var labels = ['Urban-label', 'ETQG-label', 'Parks-label', 'Companies-label', 'Market-label', 'Landmarks-label','EPA-label' ]
 var census = ['Longtime-Residents', 'Percent-Rural-Population', 'Recent-Movers', 'Total-Population', 'Percent-Urban-Population', 'Retired-Population', 'Median-Age', 'Work-at-Home-Population'];
-var all_layers = enviro.concat(census);
+var sub = enviro.concat(labels)
+var all_layers = sub.concat(census);
 
 var vis_status = {};
 
 for (var i = 0; i < all_layers.length; i++) {
     var id = all_layers[i];
     vis_status[id] = 'none';
-};    
+};
 
 ///all_layers loop
 for (var i = 0; i < all_layers.length; i++) {
@@ -81,7 +83,8 @@ map.on('click', 'Transnational-Companies', function (e) {
                  "Company: " + e.features[0].properties.Company + "<br>" +
                  "Subsidiary: " + e.features[0].properties.Subsidiary + "<br>" +
                  "Address: " + e.features[0].properties.Address + "<br>" +
-                 "Telephone: " + e.features[0].properties.Telephone)
+                 "Telephone: " + e.features[0].properties.Telephone + "<br>" + 
+                 "Website: " + e.features[0].properties.Website)
         .addTo(map);
 });
 
@@ -370,4 +373,3 @@ map.on('load', function(){
           ]
         });
 })
-
