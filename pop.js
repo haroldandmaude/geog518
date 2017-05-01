@@ -83,7 +83,7 @@ map.on('click', 'Transnational-Companies', function (e) {
                  "Company: " + e.features[0].properties.Company + "<br>" +
                  "Subsidiary: " + e.features[0].properties.Subsidiary + "<br>" +
                  "Address: " + e.features[0].properties.Address + "<br>" +
-                 "Telephone: " + e.features[0].properties.Telephone + "<br>" + 
+                 "Telephone: " + e.features[0].properties.Telephone + "<br>" +
                  "Website: " + e.features[0].properties.Website)
         .addTo(map);
 });
@@ -261,13 +261,13 @@ map.on('load', function(){
     // property:.[1],
     stops:[
           [0, '#fff7ec'],
-          [4, '#fee8c8'],
-          [30, '#fdd49e'],
-          [70,'#fdbb84'],
-          [100,'#fddbc7'],
-          [130,'#fc8d59'],
-          [170,'#ef6548'],
-          [185,'#990000'],
+          [10, '#fee8c8'],
+          [20, '#fdd49e'],
+          [25,'#fdbb84'],
+          [30,'#fddbc7'],
+          [50,'#fc8d59'],
+          [70,'#ef6548'],
+          [90,'#990000'],
           ]
         });
 })
@@ -295,13 +295,13 @@ map.on('load', function(){
     // property:.[1],
     stops:[
           [0, '#fff7ec'],
-          [4, '#fee8c8'],
-          [30, '#fdd49e'],
-          [70,'#fdbb84'],
-          [100,'#fddbc7'],
-          [130,'#fc8d59'],
-          [170,'#ef6548'],
-          [185,'#990000'],
+          [2000, '#fee8c8'],
+          [3000, '#fdd49e'],
+          [4000,'#fdbb84'],
+          [5000,'#fddbc7'],
+          [6000,'#fc8d59'],
+          [7000,'#ef6548'],
+          [8000,'#990000'],
           ]
         });
 })
@@ -329,13 +329,13 @@ map.on('load', function(){
     // property:.[1],
     stops:[
           [0, '#fff7ec'],
-          [10, '#fee8c8'],
-          [20, '#fdd49e'],
-          [30,'#fdbb84'],
-          [40,'#fddbc7'],
-          [50,'#fc8d59'],
-          [65,'#ef6548'],
-          [70,'#990000'],
+          [50, '#fee8c8'],
+          [70, '#fdd49e'],
+          [85,'#fdbb84'],
+          [100,'#fddbc7'],
+          [130,'#fc8d59'],
+          [150,'#ef6548'],
+          [170,'#990000'],
           ]
         });
 })
@@ -345,14 +345,14 @@ map.on('load', function(){
     property:"Median Age 2016",
     // property:.[1],
     stops:[
-          [30, '#fff7ec'],
-          [35, '#fee8c8'],
-          [40, '#fdd49e'],
-          [45,'#fdbb84'],
-          [50,'#fddbc7'],
-          [55,'#fc8d59'],
-          [60,'#ef6548'],
-          [65,'#990000'],
+          [20, '#fff7ec'],
+          [25, '#fee8c8'],
+          [30, '#fdd49e'],
+          [35,'#fdbb84'],
+          [40,'#fddbc7'],
+          [45,'#fc8d59'],
+          [50,'#ef6548'],
+          [60,'#990000'],
           ]
         });
 })
