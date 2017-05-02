@@ -10,21 +10,33 @@ var map = new mapboxgl.Map({
 map.addControl(new mapboxgl.NavigationControl());
 
 var enviro = ['US-Census-Urban-Areas', 'ETQG-Region', 'Farmers-Market', 'Historical-Landmarks', 'Transnational-Companies', 'EPA-Brownfield-Sites', 'Parks'];
-var labels = ['Urban-label', 'ETQG-label', 'Parks-label', 'Companies-label', 'Market-label', 'Landmarks-label','EPA-label' ]
 var census = ['Longtime-Residents', 'Percent-Rural-Population', 'Recent-Movers', 'Total-Population', 'Percent-Urban-Population', 'Retired-Population', 'Median-Age', 'Work-at-Home-Population'];
-var sub = enviro.concat(labels)
-var all_layers = sub.concat(census);
+var sub = enviro.concat(census);
+var legends = {'Total-Population': 'Total-Population-Legend', 'Recent-Movers': 'Recent-Movers-Legend', 'Median-Age': 'Median-Age-Legend', 'Work-at-Home-Population': 'Work-at-Home-Population-Legend', 'Retired-Population': 'Retired-Population-Legend', 'Percent-Rural-Population': 'Percent-Rural-Population-Legend', 'Percent-Urban-Population': 'Percent-Urban-Population-Legend', 'Longtime-Residents': 'Longtime-Residents-Legend'};
+
+var all_labels = ['Urban-label', 'ETQG-label', 'Market-label', 'Landmarks-label', 'Companies-label', 'EPA-label','Parks-label', 'Tracts' ];
+
+// var all_layers = sub.concat(all_labels);
+
+
+
 
 var vis_status = {};
+var label_status = {};
 
-for (var i = 0; i < all_layers.length; i++) {
-    var id = all_layers[i];
+for (var i = 0; i < sub.length; i++) {
+    var id = sub[i];
     vis_status[id] = 'none';
 };
 
-///all_layers loop
-for (var i = 0; i < all_layers.length; i++) {
-    var id = all_layers[i];
+for (var i = 0; i < all_labels.length; i++) {
+    var id = all_labels[i];
+    label_status[id] = 'none';
+};
+console.log(all_labels);
+///sub loop
+for (var i = 0; i < sub.length; i++) {
+    var id = sub[i];
 
     var link = document.createElement('a');
     link.href = '#';
@@ -32,6 +44,8 @@ for (var i = 0; i < all_layers.length; i++) {
     link.textContent = id;
     link.onclick = function (e) {
         var clickedLayer = this.textContent;
+        var clickedLegend = document.getElementById(legends[clickedLayer]);
+
         e.preventDefault();
         e.stopPropagation();
 
@@ -41,16 +55,51 @@ for (var i = 0; i < all_layers.length; i++) {
             map.setLayoutProperty(clickedLayer, 'visibility', 'none');
             this.className = 'none';
             vis_status[clickedLayer] = 'none';
+            clickedLegend.style.display = 'none';
+
         } else {
             this.className = 'active';
             map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
             vis_status[clickedLayer] = 'visible';
+            clickedLegend.style.display = 'block';
+
         }
     };
 
     var layers = document.getElementById('menu');
     layers.appendChild(link);
-}
+};
+
+// LABELS loop
+for (var i = 0; i < all_labels.length; i++) {
+    var id = all_labels[i];
+
+    var link = document.createElement('b');
+    link.href = '#';
+    link.className = 'menu2';
+    link.textContent = id;
+    link.onclick = function (e) {
+        var clickedLayer2 = this.textContent;
+        e.preventDefault();
+        e.stopPropagation();
+
+        var visibility = map.getLayoutProperty(clickedLayer2, 'visibility');
+
+        if (visibility === 'visible') {
+            map.setLayoutProperty(clickedLayer2, 'visibility', 'none');
+            this.className = 'none';
+            label_status[clickedLayer2] = 'none';
+        } else {
+            this.className = 'active';
+            map.setLayoutProperty(clickedLayer2, 'visibility', 'visible');
+            label_status[clickedLayer2] = 'visible';
+        }
+    };
+
+    var layers = document.getElementById('menu2');
+    layers.appendChild(link);
+};
+
 
 // POP UP FUNCTIONS
 
@@ -214,8 +263,8 @@ map.on('click', 'Work-at-Home-Population', function (e) {
 
 
 //loop over layers, make cursor point when over and not when leave
-for (var i = 0; i < all_layers.length; i++) {
-    var id = all_layers[i];
+for (var i = 0; i < sub.length; i++) {
+    var id = sub[i];
     map.on('mouseenter',id,function(){
       map.getCanvas().style.cursor = 'pointer';
     });
@@ -244,12 +293,13 @@ map.on('load', function(){
     // property:.[1],
     stops:[
           [0, '#fff7ec'],
-          [4, '#fee8c8'],
-          [30, '#fdd49e'],
-          [70,'#fdbb84'],
-          [100,'#fddbc7'],
-          [130,'#fc8d59'],
-          [170,'#ef6548'],
+          [20, '#fee8c8'],
+          [40, '#fdd49e'],
+          [60,'#fdbb84'],
+          [90,'#fc9f74'],
+          [115,'#fddbc7'],
+          [140,'#fc8d59'],
+          [160,'#ef6548'],
           [185,'#990000'],
           ]
         });
@@ -260,13 +310,14 @@ map.on('load', function(){
     property:"% Rural Population 2016",
     // property:.[1],
     stops:[
-          [0, '#fff7ec'],
-          [10, '#fee8c8'],
-          [20, '#fdd49e'],
-          [25,'#fdbb84'],
-          [30,'#fddbc7'],
-          [50,'#fc8d59'],
-          [70,'#ef6548'],
+          [10, '#fff7ec'],
+          [20, '#fee8c8'],
+          [30, '#fdd49e'],
+          [40,'#fdbb84'],
+          [50,'#fc9f74'],
+          [60,'#fddbc7'],
+          [70,'#fc8d59'],
+          [80,'#ef6548'],
           [90,'#990000'],
           ]
         });
@@ -278,12 +329,13 @@ map.on('load', function(){
     // property:.[1],
     stops:[
           [0, '#fff7ec'],
-          [4, '#fee8c8'],
-          [30, '#fdd49e'],
-          [70,'#fdbb84'],
-          [100,'#fddbc7'],
-          [130,'#fc8d59'],
-          [170,'#ef6548'],
+          [20, '#fee8c8'],
+          [40, '#fdd49e'],
+          [60,'#fdbb84'],
+          [90,'#fc9f74'],
+          [115,'#fddbc7'],
+          [140,'#fc8d59'],
+          [160,'#ef6548'],
           [185,'#990000'],
           ]
         });
@@ -295,10 +347,11 @@ map.on('load', function(){
     // property:.[1],
     stops:[
           [0, '#fff7ec'],
+          [1000, '#fcebd4']
           [2000, '#fee8c8'],
           [3000, '#fdd49e'],
           [4000,'#fdbb84'],
-          [5000,'#fddbc7'],
+          [5000,'#fc9f74'],
           [6000,'#fc8d59'],
           [7000,'#ef6548'],
           [8000,'#990000'],
@@ -311,14 +364,15 @@ map.on('load', function(){
     property:"% Urban Population 2016",
     // property:.[1],
     stops:[
-          [0, '#fff7ec'],
-          [4, '#fee8c8'],
+          [10, '#fff7ec'],
+          [20, '#fee8c8'],
           [30, '#fdd49e'],
-          [70,'#fdbb84'],
-          [100,'#fddbc7'],
-          [130,'#fc8d59'],
-          [170,'#ef6548'],
-          [185,'#990000'],
+          [40,'#fdbb84'],
+          [50,'#fc9f74'],
+          [60,'#fddbc7'],
+          [70,'#fc8d59'],
+          [80,'#ef6548'],
+          [90,'#990000'],
           ]
         });
 })
@@ -329,13 +383,14 @@ map.on('load', function(){
     // property:.[1],
     stops:[
           [0, '#fff7ec'],
-          [50, '#fee8c8'],
-          [70, '#fdd49e'],
-          [85,'#fdbb84'],
-          [100,'#fddbc7'],
-          [130,'#fc8d59'],
-          [150,'#ef6548'],
-          [170,'#990000'],
+          [20, '#fee8c8'],
+          [40, '#fdd49e'],
+          [60,'#fdbb84'],
+          [90,'#fc9f74'],
+          [115,'#fddbc7'],
+          [140,'#fc8d59'],
+          [160,'#ef6548'],
+          [185,'#990000'],
           ]
         });
 })
@@ -349,9 +404,10 @@ map.on('load', function(){
           [25, '#fee8c8'],
           [30, '#fdd49e'],
           [35,'#fdbb84'],
-          [40,'#fddbc7'],
-          [45,'#fc8d59'],
-          [50,'#ef6548'],
+          [40,'#fc9f74'],
+          [45,'#fddbc7'],
+          [50,'#fc8d59'],
+          [55,'#ef6548'],
           [60,'#990000'],
           ]
         });
@@ -363,12 +419,13 @@ map.on('load', function(){
     // property:.[1],
     stops:[
           [0, '#fff7ec'],
-          [4, '#fee8c8'],
-          [30, '#fdd49e'],
-          [70,'#fdbb84'],
-          [100,'#fddbc7'],
-          [130,'#fc8d59'],
-          [170,'#ef6548'],
+          [20, '#fee8c8'],
+          [40, '#fdd49e'],
+          [60,'#fdbb84'],
+          [90,'#fc9f74'],
+          [115,'#fddbc7'],
+          [140,'#fc8d59'],
+          [160,'#ef6548'],
           [185,'#990000'],
           ]
         });

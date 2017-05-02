@@ -36,6 +36,7 @@
         color: #404040;
         display: block;
         margin: 0;
+        padding: 0;
         padding: 10px;
         text-decoration: none;
         border-bottom: 1px solid rgba(0,0,0,0.25);
@@ -60,12 +61,54 @@
         background: #3074a4;
     }
 
+    #menu2 {
+        background: #fff;
+        position: absolute;
+        z-index: 1;
+        top: 129px;
+        left: 240px;
+        border-radius: 3px;
+        width: 180px;
+        border: 1px solid rgba(0,0,0,0.4);
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    #menu2 b {
+        font-size: 13px;
+        color: #404040;
+        display: block;
+        margin: 0;
+        padding: 0;
+        padding: 10px;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(0,0,0,0.25);
+        text-align: center;
+    }
+
+    #menu2 b:last-child {
+        border: none;
+    }
+
+    #menu2 b:hover {
+        background-color: #f8f8f8;
+        color: #404040;
+    }
+
+    #menu2 b.active {
+        background-color: #3887be;
+        color: #ffffff;
+    }
+
+    #menu2 b.active:hover {
+        background: #3074a4;
+    }
+
     .legend {
         background-color: #fff;
         border-radius: 3px;
         border: 1px solid rgba(0,0,0,0.4);
         top: 129px;
-        bottom: 454px;
+        /*bottom: 454px;*/
         box-shadow: 0 1px 2px rgba(0,0,0,0.10);
         font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
         padding-top: 5px;
@@ -91,7 +134,7 @@
         border-radius: 3px;
         border: 1px solid rgba(0,0,0,0.4);
         top: 50px;
-        left: 33px;
+        left: 10px;
         box-shadow: 0 1px 2px rgba(0,0,0,0.10);
         font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
         padding-top: 5px;
@@ -108,7 +151,7 @@
         border-radius: 3px;
         border: 1px solid rgba(0,0,0,0.4);
         top: 10px;
-        left: 33px;
+        left: 10px;
         text-align: center;
         box-shadow: 0 1px 2px rgba(0,0,0,0.10);
         font: 20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
@@ -127,7 +170,7 @@
         border-radius: 3px;
         border: 1px solid rgba(0,0,0,0.4);
         top: 89px;
-        left: 33px;
+        left: 10px;
         text-align: center;
         box-shadow: 0 1px 2px rgba(0,0,0,0.10);
         font: 20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
@@ -138,15 +181,15 @@
         padding-right: 10px;
         position: fixed;
         z-index: 1;
-        width: 160px
+        width: 160px;
     }
 
     .citation {
         background-color: rgb(6, 140, 241);
         border-radius: 3px;
         border: 1px solid rgba(0,0,0,0.4);
-        bottom: 110px;
-        left: 70px;
+        bottom: 40px;
+        left: 10px;
         text-align: center;
         box-shadow: 0 1px 2px rgba(0,0,0,0.10);
         font: 12px 'Helvetica Neue', Arial, Helvetica, sans-serif;
@@ -157,10 +200,34 @@
         padding-right: 10px;
         position: fixed;
         z-index: 1;
-        height: 30px
-        width: 30px;
+        height: 40px;
+        width: 20px;
     }
 
+    .cloro-legends {
+        background-color: #fff;
+        border-radius: 3px;
+        border: 1px solid rgba(0,0,0,0.4);
+        bottom: 100px;
+        right: 10px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.10);
+        font: 14px/10px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        padding-top: 1px;
+        padding-bottom: 7px;
+        padding-left: 10px;
+        padding-right: 10px;
+        position: fixed;
+        z-index: 1;
+    }
+
+    .cloro-legends div span {
+
+        display: inline-block;
+        height: 20px;
+        margin-right: 2px;
+        margin-top: 2px;
+        width: 20px;
+    }
 </style>
 
 <nav id="menu"></nav>
@@ -195,6 +262,111 @@
 <div id='citation text' class='citation'>
     <p><a href='./citation.html'target="_blank">Info</a></p>
 </div>
+
+<div id='Total-Population-Legend' class='cloro-legends' style="display:none">
+    <h4>Total-Population</h4>
+    <div><span style='background-color: #990000'></span>8,000</div>
+    <div><span style='background-color: #ef6548'></span>7,000</div>
+    <div><span style='background-color: #fc8d59'></span>6,000</div>
+    <div><span style='background-color: #fc9f74'></span>5,000</div>
+    <div><span style='background-color: #fdbb84'></span>4,000</div>
+    <div><span style='background-color: #fdd49e'></span>3,000</div>
+    <div><span style='background-color: #fee8c8'></span>2,000</div>
+    <div><span style='background-color: #fcebd4'></span>1,000</div>
+    <div><span style='background-color: #fff7ec'></span>0</div>
+</div>
+
+<div id='Recent-Movers-Legend' class='cloro-legends' style="display:none">
+    <h4>Recent Movers</h4>
+    <div><span style='background-color: #990000'></span>185</div>
+    <div><span style='background-color: #ef6548'></span>160</div>
+    <div><span style='background-color: #fc8d59'></span>140</div>
+    <div><span style='background-color: #fc9f74'></span>115</div>
+    <div><span style='background-color: #fdbb84'></span>90</div>
+    <div><span style='background-color: #fdd49e'></span>60</div>
+    <div><span style='background-color: #fee8c8'></span>40</div>
+    <div><span style='background-color: #fcebd4'></span>20</div>
+    <div><span style='background-color: #fff7ec'></span>0</div>
+</div>
+
+<div id='Median-Age-Legend' class='cloro-legends' style="display:none">
+    <h4>Median Age</h4>
+    <div><span style='background-color: #990000'></span>60</div>
+    <div><span style='background-color: #ef6548'></span>55</div>
+    <div><span style='background-color: #fc8d59'></span>50</div>
+    <div><span style='background-color: #fc9f74'></span>45</div>
+    <div><span style='background-color: #fdbb84'></span>40</div>
+    <div><span style='background-color: #fdd49e'></span>35</div>
+    <div><span style='background-color: #fee8c8'></span>30</div>
+    <div><span style='background-color: #fcebd4'></span>25</div>
+    <div><span style='background-color: #fff7ec'></span>20</div>
+</div>
+
+<div id='Work-at-Home-Population-Legend' class='cloro-legends' style="display:none">
+    <h4>Work-at-Home-Population</h4>
+    <div><span style='background-color: #990000'></span>185</div>
+    <div><span style='background-color: #ef6548'></span>160</div>
+    <div><span style='background-color: #fc8d59'></span>140</div>
+    <div><span style='background-color: #fc9f74'></span>115</div>
+    <div><span style='background-color: #fdbb84'></span>90</div>
+    <div><span style='background-color: #fdd49e'></span>60</div>
+    <div><span style='background-color: #fee8c8'></span>40</div>
+    <div><span style='background-color: #fcebd4'></span>20</div>
+    <div><span style='background-color: #fff7ec'></span>0</div>
+</div>
+
+<div id='Retired-Population-Legend' class='cloro-legends' style="display:none">
+    <h4>Retired-Population</h4>
+    <div><span style='background-color: #990000'></span>185</div>
+    <div><span style='background-color: #ef6548'></span>160</div>
+    <div><span style='background-color: #fc8d59'></span>140</div>
+    <div><span style='background-color: #fc9f74'></span>115</div>
+    <div><span style='background-color: #fdbb84'></span>90</div>
+    <div><span style='background-color: #fdd49e'></span>60</div>
+    <div><span style='background-color: #fee8c8'></span>40</div>
+    <div><span style='background-color: #fcebd4'></span>20</div>
+    <div><span style='background-color: #fff7ec'></span>0</div>
+</div>
+
+<div id='Percent-Rural-Population-Legend' class='cloro-legends' style="display:none">
+    <h4>Percent-Rural-Population</h4>
+    <div><span style='background-color: #990000'></span>90</div>
+    <div><span style='background-color: #ef6548'></span>80</div>
+    <div><span style='background-color: #fc8d59'></span>70</div>
+    <div><span style='background-color: #fc9f74'></span>60</div>
+    <div><span style='background-color: #fdbb84'></span>50</div>
+    <div><span style='background-color: #fdd49e'></span>40</div>
+    <div><span style='background-color: #fee8c8'></span>30</div>
+    <div><span style='background-color: #fcebd4'></span>20</div>
+    <div><span style='background-color: #fff7ec'></span>10</div>
+</div>
+
+<div id='Percent-Urban-Population-Legend' class='cloro-legends' style="display:none">
+    <h4>Percent-Urban-Population</h4>
+    <div><span style='background-color: #990000'></span>90</div>
+    <div><span style='background-color: #ef6548'></span>80</div>
+    <div><span style='background-color: #fc8d59'></span>70</div>
+    <div><span style='background-color: #fc9f74'></span>60</div>
+    <div><span style='background-color: #fdbb84'></span>50</div>
+    <div><span style='background-color: #fdd49e'></span>40</div>
+    <div><span style='background-color: #fee8c8'></span>30</div>
+    <div><span style='background-color: #fcebd4'></span>20</div>
+    <div><span style='background-color: #fff7ec'></span>10</div>
+</div>
+
+<div id='Longtime-Residents-Legend' class='cloro-legends' style="display:none">
+    <h4>Longtime-Residents</h4>
+    <div><span style='background-color: #990000'></span>185</div>
+    <div><span style='background-color: #ef6548'></span>160</div>
+    <div><span style='background-color: #fc8d59'></span>140</div>
+    <div><span style='background-color: #fc9f74'></span>115</div>
+    <div><span style='background-color: #fdbb84'></span>90</div>
+    <div><span style='background-color: #fdd49e'></span>60</div>
+    <div><span style='background-color: #fee8c8'></span>40</div>
+    <div><span style='background-color: #fcebd4'></span>20</div>
+    <div><span style='background-color: #fff7ec'></span>0</div>
+</div>
+
 
 <!-- <pre id='features'></pre> -->
 <script language="javascript" type = "text/javascript" src ="pop.js"></script>
