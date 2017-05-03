@@ -66,7 +66,7 @@
         position: absolute;
         z-index: 1;
         top: 129px;
-        left: 240px;
+        left: 231px;
         border-radius: 3px;
         width: 130px;
         border: 1px solid rgba(0,0,0,0.4);
@@ -228,6 +228,26 @@
         margin-top: 2px;
         width: 20px;
     }
+
+    .legend_label {
+        background-color: rgb(6, 140, 241);
+        border-radius: 3px;
+        border: 1px solid rgba(0,0,0,0.4);
+        top: 95px;
+        left: 230px;
+        text-align: center;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+        font: 15px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        position: fixed;
+        z-index: 1;
+        width: 110px;
+    }
+
 </style>
 
 <nav id="menu"></nav>
@@ -235,13 +255,13 @@
 <div id='map'></div>
 
 <div id='layer-legend' class='legend'>
-    <div><span style='background-color: rgba(128, 128, 128, .4); height: 18px; width: 18px; border-style: solid; border-width: 2px; border-color: rgba(128, 128, 128, 1); margin-top: 3px'></div>
-    <div><span style='background-color: #ffffff; height: 18px; width: 18px; border: 2px solid black; margin-top: 7px'></div>
-    <div><span style='background-color: #4245f4; height: 18px; width: 18px; border-radius: 50%; border: 2px solid black; margin-top: 7px'></div>
-    <div><span style='background-color: rgba(226,22,11,1); height: 18px; width: 18px; border-radius: 50%; border: 2px solid black; margin-top: 7px'></div>
-    <div><span style='background-color: rgba(237,226,16,1); height: 18px; width: 18px; border-radius: 50%; border: 2px solid black; margin-top: 7px'></div>
-    <div><span style='background-color: rgba(139,69,19,1); height: 18px; width: 18px; border-radius: 50%; border: 2px solid black; margin-top: 7px'></div>
-    <div><span style='background-color: rgba(16,130,33,.8); height: 18px; width: 18px; border-style: solid; border-width: 2px; border-color: rgba(16,130,33,1); margin-top: 6px'></div>
+    <div><span style='background-color: rgba(128, 128, 128, .4); height: 11px; width: 11px; border-style: solid; border-width: 2px; border-color: rgba(128, 128, 128, 1); margin-top: 3px'></div>
+    <div><span style='background-color: #ffffff; height: 12px; width: 11px; border: 2px solid black; margin-top: 4px'></div>
+    <div><span style='background-color: #4245f4; height: 11px; width: 11px; border-radius: 50%; border: 2px solid black; margin-top: 4px'></div>
+    <div><span style='background-color: rgba(226,22,11,1); height: 11px; width: 11px; border-radius: 50%; border: 2px solid black; margin-top: 4px'></div>
+    <div><span style='background-color: rgba(237,226,16,1); height: 11px; width: 11px; border-radius: 50%; border: 2px solid black; margin-top: 4px'></div>
+    <div><span style='background-color: rgba(139,69,19,1); height: 11px; width: 11px; border-radius: 50%; border: 2px solid black; margin-top: 4px'></div>
+    <div><span style='background-color: rgba(16,130,33,.8); height: 11px; width: 11px; border-style: solid; border-width: 2px; border-color: rgba(16,130,33,1); margin-top: 4px'></div>
 </div>
 
 <div id='change-base' class='base'>
@@ -257,6 +277,10 @@
 
 <div id='layer-text' class='layer_label'>
     <label>Select Layers</label>
+</div>
+
+<div id='legend-text' class='legend_label'>
+    <label>Select Legend</label>
 </div>
 
 <div id='citation text' class='citation'>
