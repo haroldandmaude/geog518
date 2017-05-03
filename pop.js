@@ -9,12 +9,12 @@ var map = new mapboxgl.Map({
 
 map.addControl(new mapboxgl.NavigationControl());
 
-var enviro = ['US-Census-Urban-Areas', 'ETQG-Region', 'Farmers-Market', 'Historical-Landmarks', 'Transnational-Companies', 'EPA-Brownfield-Sites', 'Parks'];
-var census = ['Longtime-Residents', 'Percent-Rural-Population', 'Recent-Movers', 'Total-Population', 'Percent-Urban-Population', 'Retired-Population', 'Median-Age', 'Work-at-Home-Population'];
+var enviro = ['US-Census-Urban-Areas', 'ETQG-Region', 'Farmers-Market', 'Historical-Landmarks', 'Transnational-Companies', 'EPA-Brownfield-Sites', 'Parks', 'Healthcare'];
+var census = ['Longtime-Residents', 'Percent-Rural-Population', 'Recent-Movers', 'Total-Population', 'Percent-Urban-Population', 'Retired-Population', 'Median-Age', 'Work-at-Home-Population', 'Percent-Some-College', 'Percent-Highschool-Diploma', 'Percent-Bachelors-Degree', 'Median-Household-Income'];
 var sub = enviro.concat(census);
-var legends = {'Total-Population': 'Total-Population-Legend', 'Recent-Movers': 'Recent-Movers-Legend', 'Median-Age': 'Median-Age-Legend', 'Work-at-Home-Population': 'Work-at-Home-Population-Legend', 'Retired-Population': 'Retired-Population-Legend', 'Percent-Rural-Population': 'Percent-Rural-Population-Legend', 'Percent-Urban-Population': 'Percent-Urban-Population-Legend', 'Longtime-Residents': 'Longtime-Residents-Legend'};
+var legends = {'Total-Population': 'Total-Population-Legend', 'Recent-Movers': 'Recent-Movers-Legend', 'Median-Age': 'Median-Age-Legend', 'Work-at-Home-Population': 'Work-at-Home-Population-Legend', 'Retired-Population': 'Retired-Population-Legend', 'Percent-Rural-Population': 'Percent-Rural-Population-Legend', 'Percent-Urban-Population': 'Percent-Urban-Population-Legend', 'Longtime-Residents': 'Longtime-Residents-Legend', 'Percent-Some-College': 'Percent-Some-College-Legend', 'Percent-Highschool-Diploma': 'Percent-Highschool-Diploma-Legend', 'Percent-Bachelors-Degree': 'Percent-Bachelors-Degree-Legend', 'Median-Household-Income': 'Median-Household-Income-Legend'};
 
-var all_labels = ['Urban-label', 'ETQG-label', 'Market-label', 'Landmarks-label', 'Companies-label', 'EPA-label','Parks-label', 'Tracts' ];
+var all_labels = ['Urban-label', 'ETQG-label', 'Market-label', 'Landmarks-label', 'Companies-label', 'EPA-label','Parks-label', 'Tracts-label' ];
 
 // var all_layers = sub.concat(all_labels);
 
@@ -118,9 +118,9 @@ map.on('click', 'Farmers-Market', function (e) {
     new mapboxgl.Popup()
         .setLngLat(e.features[0].geometry.coordinates)
         .setHTML("Farmers-Market" + "<br>" +
-                 "Name: " + e.features[0].properties.Name + "<br>" +
-                 "City: " + e.features[0].properties.City + "<br>" +
-                 "Address: " + e.features[0].properties.Address)
+                 "Name: " + e.features[0].properties.name + "<br>" +
+                 "City: " + e.features[0].properties.city + "<br>" +
+                 "Address: " + e.features[0].properties.address + " " + e.features[0].properties.zip)
         .addTo(map);
 });
 
@@ -134,6 +134,30 @@ map.on('click', 'Transnational-Companies', function (e) {
                  "Address: " + e.features[0].properties.Address + "<br>" +
                  "Telephone: " + e.features[0].properties.Telephone + "<br>" +
                  "Website: " + e.features[0].properties.Website)
+        .addTo(map);
+});
+
+//Healthcare Snapshot
+map.on('click', 'Healthcare', function (e) {
+    new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML("Healthcare Overview" + "<br>" +
+                 "Percent Low Birth Weight: " + e.features[0].properties["Percent Low Birth Weight"] + "<br>" +
+                 "Percent Unemployed: " + e.features[0].properties["Percent Unemployed"] + "<br>" +
+                 "Percent Excessive Drinking: " + e.features[0].properties["Percent Excessive Drinking"] + "<br>" +
+                 "Food Environment Index: " + e.features[0].properties["Food Environment Index"] + "<br>" +
+                 "Ratio People per Dentist: " + e.features[0].properties["Percent Unemployed"] + "<br>" +
+                 "Percent Fair Health and Below: " + e.features[0].properties["Percent Fair Health and Below"] + "<br>" +
+                 "Teen Birth Rate: " + e.features[0].properties["Teen Birth Rate"] + "<br>" +
+                 "Percent Obese: " + e.features[0].properties["Percent Obese"] + "<br>" +
+                 "Ratio People per Physician: " + e.features[0].properties["Ratio People per Physician"] + "<br>" +
+                 "Percent Physically Inactive: " + e.features[0].properties["Percent Physically Inactive"] + "<br>" +
+                 "Percent Access to Exercise Opportunities: " + e.features[0].properties["Percent Access to Exercise Opportunities"] + "<br>" +
+                 "Premature Deaths: " + e.features[0].properties["Premature Deaths"] + "<br>" +
+                 "Percent Smokers: " + e.features[0].properties["Percent Smokers"] + "<br>" +
+                 "Injury Death Rate: " + e.features[0].properties["Injury Death Rate"] + "<br>" +
+                 "Percent Uninsured: " + e.features[0].properties["Percent Uninsured"] + "<br>" +
+                 "Percent Receiving Diabetic Monitoring: " + e.features[0].properties["Percent Receiving Diabetic Monitoring"])
         .addTo(map);
 });
 
@@ -258,6 +282,54 @@ map.on('click', 'Work-at-Home-Population', function (e) {
                  "2014: " + e.features[0].properties["Population (work at home) 2014"] + "<br>" +
                  "2015: " + e.features[0].properties["Population (work at home) 2015"] + "<br>" +
                  "2016: " + e.features[0].properties["Population (work at home) 2016"])
+        .addTo(map);
+});
+
+map.on('click', 'Percent-Some-College', function (e) {
+    new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML("Percent-Some-College" + "<br>" +
+                 "2012: " + e.features[0].properties["% Some College 2012"] + "<br>" +
+                 "2013: " + e.features[0].properties["% Some College 2013"] + "<br>" +
+                 "2014: " + e.features[0].properties["% Some College 2014"] + "<br>" +
+                 "2015: " + e.features[0].properties["% Some College 2015"] + "<br>" +
+                 "2016: " + e.features[0].properties["% Some College 2016"])
+        .addTo(map);
+});
+
+map.on('click', 'Percent-Highschool-Diploma', function (e) {
+    new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML("Percent-Highschool-Diploma" + "<br>" +
+                 "2012: " + e.features[0].properties["% Highschool Diploma 2012"] + "<br>" +
+                 "2013: " + e.features[0].properties["% Highschool Diploma 2013"] + "<br>" +
+                 "2014: " + e.features[0].properties["% Highschool Diploma 2014"] + "<br>" +
+                 "2015: " + e.features[0].properties["% Highschool Diploma 2015"] + "<br>" +
+                 "2016: " + e.features[0].properties["% Highschool Diploma 2016"])
+        .addTo(map);
+});
+
+map.on('click', 'Percent-Bachelors-Degree', function (e) {
+    new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML("Percent-Bachelors-Degree" + "<br>" +
+                 "2012: " + e.features[0].properties["% Bachelors Degree 2012"] + "<br>" +
+                 "2013: " + e.features[0].properties["% Bachelors Degree 2013"] + "<br>" +
+                 "2014: " + e.features[0].properties["% Bachelors Degree 2014"] + "<br>" +
+                 "2015: " + e.features[0].properties["% Bachelors Degree 2015"] + "<br>" +
+                 "2016: " + e.features[0].properties["% Bachelors Degree 2016"])
+        .addTo(map);
+});
+
+map.on('click', 'Median-Household-Income', function (e) {
+    new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML("Median-Household-Income" + "<br>" +
+                 "2012: " + e.features[0].properties["Median HH Income 2012"] + "<br>" +
+                 "2013: " + e.features[0].properties["Median HH Income 2013"] + "<br>" +
+                 "2014: " + e.features[0].properties["Median HH Income 2014"] + "<br>" +
+                 "2015: " + e.features[0].properties["Median HH Income 2015"] + "<br>" +
+                 "2016: " + e.features[0].properties["Median HH Income 2016"])
         .addTo(map);
 });
 
@@ -427,6 +499,75 @@ map.on('load', function(){
           [140,'#fc8d59'],
           [160,'#ef6548'],
           [185,'#990000'],
+          ]
+        });
+})
+
+map.on('load', function(){
+  map.setPaintProperty('Percent-Some-College', 'fill-color',{
+    property:"% Some College 2016",
+    // property:.[1],
+    stops:[
+          [10, '#fff7ec'],
+          [20, '#fee8c8'],
+          [30, '#fdd49e'],
+          [40,'#fdbb84'],
+          [50,'#fc9f74'],
+          [60,'#fddbc7'],
+          [70,'#fc8d59'],
+          [80,'#ef6548'],
+          [90,'#990000'],
+          ]
+        });
+})
+
+map.on('load', function(){
+  map.setPaintProperty('Percent-Highschool-Diploma', 'fill-color',{
+    property:"% Highschool Diploma 2016",
+    // property:.[1],
+    stops:[
+          [0, '#fff7ec'],
+          [10, '#fee8c8'],
+          [30, '#fdd49e'],
+          [40,'#fdbb84'],
+          [50,'#fddbc7'],
+          [60,'#fc8d59'],
+          [70,'#ef6548'],
+          [90,'#990000'],
+          ]
+        });
+})
+
+map.on('load', function(){
+  map.setPaintProperty('Percent-Bachelors-Degree', 'fill-color',{
+    property:"% Bachelors Degree 2016",
+    // property:.[1],
+    stops:[
+          [0, '#fff7ec'],
+          [10, '#fee8c8'],
+          [30, '#fdd49e'],
+          [40,'#fdbb84'],
+          [50,'#fddbc7'],
+          [60,'#fc8d59'],
+          [70,'#ef6548'],
+          [90,'#990000'],
+          ]
+        });
+})
+
+map.on('load', function(){
+  map.setPaintProperty('Median-Household-Income', 'fill-color',{
+    property:"Median HH Income 2016",
+    // property:.[1],
+    stops:[
+          [10000, '#fff7ec'],
+          [30000, '#fee8c8'],
+          [50000, '#fdd49e'],
+          [60000,'#fdbb84'],
+          [80000,'#fddbc7'],
+          [90000,'#fc8d59'],
+          [110000,'#ef6548'],
+          [130000,'#990000'],
           ]
         });
 })
