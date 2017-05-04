@@ -419,7 +419,7 @@ map.on('load', function(){
     // property:.[1],
     stops:[
           [0, '#fff7ec'],
-          [1000, '#fcebd4']
+          [1000, '#fcebd4'],
           [2000, '#fee8c8'],
           [3000, '#fdd49e'],
           [4000,'#fdbb84'],
